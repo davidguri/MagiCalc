@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,6 +12,13 @@ import Layout from "./components/Layout/Layout";
 
 const Row = ({ children }) => <View style={styles.row}>{children}</View>;
 
+// the idea is that you input shit into the calculator and then, when you press the
+// = sign, it outputs the number of that person
+
+const outputNumberHandler = () => {
+  // set the output prop to the phone number
+};
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
@@ -18,76 +26,76 @@ export default function App() {
       <View style={[styles.topContainer, styles.bodyCont]}>
         <Layout />
         <View style={styles.ioBox}>
-          <Text style={styles.ioText}>I/O</Text>
+          <Text style={styles.ioText}>i/o</Text>
         </View>
       </View>
       <View style={[styles.bottomContainer, styles.bodyCont]}>
         <View style={styles.gridContainer}>
           <Row>
-            <TouchableOpacity onPress={() => {}} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>C</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>+/-</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>DEL</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>/</Text>
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>1</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>2</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>3</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>x</Text>
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>4</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>5</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>6</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>-</Text>
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>7</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>8</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.numText}>9</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>+</Text>
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn, styles.largeBtn]}>
+            <TouchableOpacity onPress={() => { }} style={[styles.btn, styles.largeBtn]}>
               <Text style={styles.numText}>0</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} onLongPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>=</Text>
             </TouchableOpacity>
           </Row>

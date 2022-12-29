@@ -1,3 +1,3 @@
 # MagiCalc
 
-A calculator app that calculares your phone number
+A calculator app that calculates your phone number

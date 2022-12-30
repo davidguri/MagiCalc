@@ -110,7 +110,7 @@ export default function App() {
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn, styles.largeBtn]}>
+            <TouchableOpacity style={[styles.btn, styles.mediumBtn]}>
               <TextInput style={styles.numText} value="0" editable={false} onPressIn={() => setIsOutputValue("0")} />
             </TouchableOpacity>
             <TouchableOpacity onPress={numberOutputValue} onLongPress={toggleSettingsModalHandler} style={[styles.btn, styles.equalBtn]}>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   equalBtn: {
     backgroundColor: "#4fffe3",
     margin: 10,
-    flex: 0.8,
+    flex: 1.8,
     borderRadius: 25,
   },
 

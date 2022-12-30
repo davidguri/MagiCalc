@@ -6,6 +6,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 
 import Layout from "./components/Layout/Layout";
@@ -17,10 +18,6 @@ const Row = ({ children }) => <View style={styles.row}>{children}</View>;
 // = sign, it outputs the number of that person
 
 export default function App() {
-  const outputNumberHandler = () => {
-    // set the output prop to the selected phone number
-  };
-
   const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
 
   const toggleSettingsModalHandler = () => {
@@ -39,83 +36,85 @@ export default function App() {
     setIsOutputValue("0")
   };
 
+  const addSymbolHandler = () => {
+
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <View style={[styles.topContainer, styles.bodyCont]}>
         <Layout />
         <View style={styles.ioBox}>
-          <Text style={styles.ioText}>{isOutputValue}</Text>
+          <TextInput style={styles.ioText} value={isOutputValue} />
         </View>
       </View>
       <View style={[styles.bottomContainer, styles.bodyCont]}>
         <View style={styles.gridContainer}>
+
           <Row>
-            <TouchableOpacity onPress={zeroOutputValue} style={[styles.btn]}>
+            <TouchableOpacity onPress={zeroOutputValue} style={[styles.btn, styles.mediumBtn]}>
               <Text style={styles.operatorText}>C</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>+/-</Text>
+              <Text style={styles.operatorText}>&larr;</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>DEL</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>/</Text>
+              <TextInput style={styles.operatorText} value="&divide;" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>1</Text>
+              <TextInput style={styles.numText} value="1" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>2</Text>
+              <TextInput style={styles.numText} value="2" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>3</Text>
+              <TextInput style={styles.numText} value="3" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>x</Text>
+              <TextInput style={styles.operatorText} value="x" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>4</Text>
+              <TextInput style={styles.numText} value="4" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>5</Text>
+              <TextInput style={styles.numText} value="5" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>6</Text>
+              <TextInput style={styles.numText} value="6" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>-</Text>
+              <TextInput style={styles.operatorText} value="-" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>7</Text>
+              <TextInput style={styles.numText} value="7" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>8</Text>
+              <TextInput style={styles.numText} value="8" editable={false} />
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.btn]}>
+              <TextInput style={styles.numText} value="9" editable={false} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.numText}>9</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
-              <Text style={styles.operatorText}>+</Text>
+              <TextInput style={styles.operatorText} value="+" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn, styles.largeBtn]}>
-              <Text style={styles.numText}>0</Text>
+            <TouchableOpacity style={[styles.btn, styles.largeBtn]}>
+              <TextInput style={styles.numText} value="0" editable={false} onPressIn={() => setIsOutputValue("0")} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={numberOutputValue} onLongPress={toggleSettingsModalHandler} style={[styles.btn]}>
-              <Text style={styles.operatorText}>=</Text>
+            <TouchableOpacity onPress={numberOutputValue} onLongPress={toggleSettingsModalHandler} style={[styles.btn, styles.equalBtn]}>
+              <Text style={styles.equalText}>=</Text>
             </TouchableOpacity>
           </Row>
         </View>
@@ -156,8 +155,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  mediumBtn: {
+    flex: 2,
+  },
+
   largeBtn: {
     flex: 3,
+  },
+
+  equalBtn: {
+    backgroundColor: "#4fffe3",
+    margin: 10,
+    flex: 0.8,
+    borderRadius: 25,
   },
 
   numText: {
@@ -168,6 +178,12 @@ const styles = StyleSheet.create({
 
   operatorText: {
     color: "#4fffe3",
+    fontSize: 30,
+    fontWeight: "600",
+  },
+
+  equalText: {
+    color: "black",
     fontSize: 30,
     fontWeight: "600",
   },

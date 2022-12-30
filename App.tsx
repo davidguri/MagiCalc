@@ -9,17 +9,23 @@ import {
 } from "react-native";
 
 import Layout from "./components/Layout/Layout";
+import SettingsPage from "./screens/Settings";
 
 const Row = ({ children }) => <View style={styles.row}>{children}</View>;
 
 // the idea is that you input shit into the calculator and then, when you press the
 // = sign, it outputs the number of that person
 
-const outputNumberHandler = () => {
-  // set the output prop to the phone number
-};
-
 export default function App() {
+  const outputNumberHandler = () => {
+    // set the output prop to the selected phone number
+  };
+
+  const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
+
+  const toggleSettingsModalHandler = () => {
+    setIsOpenSettingsModal(!isOpenSettingsModal);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
@@ -95,12 +101,13 @@ export default function App() {
             <TouchableOpacity onPress={() => { }} style={[styles.btn, styles.largeBtn]}>
               <Text style={styles.numText}>0</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} onLongPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => { }} onLongPress={toggleSettingsModalHandler} style={[styles.btn]}>
               <Text style={styles.operatorText}>=</Text>
             </TouchableOpacity>
           </Row>
         </View>
       </View>
+      <SettingsPage visible={isOpenSettingsModal} onCancel={toggleSettingsModalHandler} />
     </SafeAreaView>
   );
 }

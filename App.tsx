@@ -24,7 +24,7 @@ export default function App() {
     setIsOpenSettingsModal(!isOpenSettingsModal);
   };
   // output stuff
-  var phoneNumber = "069 527 1172";
+  var phoneNumber = "069 527 1172"; // this value shouldn't be hardcoded, but I'm too lazy to fix it rn
 
   const [isOutputValue, setIsOutputValue] = useState("0");
 
@@ -40,6 +40,8 @@ export default function App() {
   const addSymbolHandler = () => {
 
   };
+
+
 
   return (
     <SafeAreaView style={styles.container}>

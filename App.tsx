@@ -23,7 +23,7 @@ export default function App() {
   const toggleSettingsModalHandler = () => {
     setIsOpenSettingsModal(!isOpenSettingsModal);
   };
-
+  // output stuff
   var phoneNumber = "069 527 1172";
 
   const [isOutputValue, setIsOutputValue] = useState("0");
@@ -36,6 +36,7 @@ export default function App() {
     setIsOutputValue("0")
   };
 
+  // input stuff
   const addSymbolHandler = () => {
 
   };
@@ -46,7 +47,8 @@ export default function App() {
       <View style={[styles.topContainer, styles.bodyCont]}>
         <Layout />
         <View style={styles.ioBox}>
-          <TextInput style={styles.ioText} value={isOutputValue} />
+          <TextInput style={styles.inputText} value={"HELLO"} />
+          <TextInput style={styles.outputText} value={isOutputValue} />
         </View>
       </View>
       <View style={[styles.bottomContainer, styles.bodyCont]}>
@@ -54,7 +56,7 @@ export default function App() {
 
           <Row>
             <TouchableOpacity onPress={zeroOutputValue} style={[styles.btn, styles.mediumBtn]}>
-              <Text style={styles.operatorText}>C</Text>
+              <Text style={styles.operatorText}>AC</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
               <Text style={styles.operatorText}>&larr;</Text>
@@ -149,8 +151,6 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: "#000",
     flex: 1,
-    borderColor: "black",
-    borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -193,12 +193,12 @@ const styles = StyleSheet.create({
   },
 
   topContainer: {
-    flex: 0.415,
+    flex: 0.42,
     paddingHorizontal: 20,
   },
 
   bottomContainer: {
-    flex: 0.585,
+    flex: 0.58,
     display: "flex",
     borderTopWidth: 4,
     borderTopColor: "#4fffe3",
@@ -207,15 +207,22 @@ const styles = StyleSheet.create({
 
   ioBox: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    justifyContent: "space-around",
     width: "100%",
+    marginBottom: 5,
   },
 
-  ioText: {
+  outputText: {
     color: "white",
-    fontSize: 60,
+    fontSize: 64,
+    fontWeight: "400",
+  },
+
+  inputText: {
+    color: "#444",
+    fontSize: 32,
     fontWeight: "400",
   },
 });

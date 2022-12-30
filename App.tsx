@@ -26,19 +26,32 @@ export default function App() {
   const toggleSettingsModalHandler = () => {
     setIsOpenSettingsModal(!isOpenSettingsModal);
   };
+
+  var phoneNumber = "069 527 1172";
+
+  const [isOutputValue, setIsOutputValue] = useState("0");
+
+  const numberOutputValue = () => {
+    setIsOutputValue(phoneNumber)
+  };
+
+  const zeroOutputValue = () => {
+    setIsOutputValue("0")
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
       <View style={[styles.topContainer, styles.bodyCont]}>
         <Layout />
         <View style={styles.ioBox}>
-          <Text style={styles.ioText}>i/o</Text>
+          <Text style={styles.ioText}>{isOutputValue}</Text>
         </View>
       </View>
       <View style={[styles.bottomContainer, styles.bodyCont]}>
         <View style={styles.gridContainer}>
           <Row>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={zeroOutputValue} style={[styles.btn]}>
               <Text style={styles.operatorText}>C</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
@@ -101,7 +114,7 @@ export default function App() {
             <TouchableOpacity onPress={() => { }} style={[styles.btn, styles.largeBtn]}>
               <Text style={styles.numText}>0</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} onLongPress={toggleSettingsModalHandler} style={[styles.btn]}>
+            <TouchableOpacity onPress={numberOutputValue} onLongPress={toggleSettingsModalHandler} style={[styles.btn]}>
               <Text style={styles.operatorText}>=</Text>
             </TouchableOpacity>
           </Row>
@@ -164,13 +177,16 @@ const styles = StyleSheet.create({
   },
 
   topContainer: {
-    flex: 0.425,
+    flex: 0.415,
     paddingHorizontal: 20,
   },
 
   bottomContainer: {
-    flex: 0.575,
+    flex: 0.585,
     display: "flex",
+    borderTopWidth: 4,
+    borderTopColor: "#4fffe3",
+    marginBottom: 5,
   },
 
   ioBox: {
@@ -178,11 +194,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",
+    width: "100%",
   },
 
   ioText: {
     color: "white",
-    fontSize: 64,
+    fontSize: 60,
     fontWeight: "400",
   },
 });

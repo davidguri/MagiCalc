@@ -27,13 +27,15 @@ export default function App() {
   var phoneNumber = "069 527 1172"; // this value shouldn't be hardcoded, but I'm too lazy to fix it rn
 
   const [isOutputValue, setIsOutputValue] = useState("0");
+  const [isInputValue, setIsInputValue] = useState("");
 
   const numberOutputValue = () => {
     setIsOutputValue(phoneNumber)
   };
 
-  const zeroOutputValue = () => {
+  const zeroValue = () => {
     setIsOutputValue("0")
+    setIsInputValue("")
   };
 
   // input stuff
@@ -41,7 +43,17 @@ export default function App() {
 
   };
 
+  function addNumber(x: string) {
+    setIsInputValue(isInputValue + x)
+  };
 
+  function addSymbol(y: string) {
+    setIsInputValue(isInputValue + y)
+  };
+
+  function deleteCharacter(z: string) {
+    setIsInputValue(z.slice(0, -1))
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,7 +61,7 @@ export default function App() {
       <View style={[styles.topContainer, styles.bodyCont]}>
         <Layout />
         <View style={styles.ioBox}>
-          <TextInput style={styles.inputText} value={"HELLO"} />
+          <TextInput style={styles.inputText} value={isInputValue} />
           <TextInput style={styles.outputText} value={isOutputValue} />
         </View>
       </View>
@@ -57,64 +69,64 @@ export default function App() {
         <View style={styles.gridContainer}>
 
           <Row>
-            <TouchableOpacity onPress={zeroOutputValue} style={[styles.btn, styles.mediumBtn]}>
+            <TouchableOpacity onPress={zeroValue} style={[styles.btn, styles.mediumBtn]}>
               <Text style={styles.operatorText}>AC</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => deleteCharacter(isInputValue)} style={[styles.btn]}>
               <Text style={styles.operatorText}>&larr;</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addSymbol(" / ")} style={[styles.btn]}>
               <TextInput style={styles.operatorText} value="&divide;" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("1")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="1" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("2")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="2" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("3")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="3" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addSymbol(" x ")} style={[styles.btn]}>
               <TextInput style={styles.operatorText} value="x" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("4")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="4" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("5")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="5" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("6")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="6" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addSymbol(" - ")} style={[styles.btn]}>
               <TextInput style={styles.operatorText} value="-" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("7")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="7" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("8")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="8" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addNumber("9")} style={[styles.btn]}>
               <TextInput style={styles.numText} value="9" editable={false} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => { }} style={[styles.btn]}>
+            <TouchableOpacity onPress={() => addSymbol(" + ")} style={[styles.btn]}>
               <TextInput style={styles.operatorText} value="+" editable={false} />
             </TouchableOpacity>
           </Row>
 
           <Row>
-            <TouchableOpacity style={[styles.btn, styles.mediumBtn]}>
+            <TouchableOpacity onPress={() => addNumber("0")} style={[styles.btn, styles.mediumBtn]}>
               <TextInput style={styles.numText} value="0" editable={false} onPressIn={() => setIsOutputValue("0")} />
             </TouchableOpacity>
             <TouchableOpacity onPress={numberOutputValue} onLongPress={toggleSettingsModalHandler} style={[styles.btn, styles.equalBtn]}>
@@ -218,13 +230,13 @@ const styles = StyleSheet.create({
 
   outputText: {
     color: "white",
-    fontSize: 64,
+    fontSize: 58,
     fontWeight: "400",
   },
 
   inputText: {
     color: "#444",
-    fontSize: 32,
-    fontWeight: "400",
+    fontSize: 30,
+    fontWeight: "300",
   },
 });

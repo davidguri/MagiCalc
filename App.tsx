@@ -14,9 +14,6 @@ import SettingsPage from "./screens/Settings";
 
 const Row = ({ children }) => <View style={styles.row}>{children}</View>;
 
-// the idea is that you input shit into the calculator and then, when you press the
-// = sign, it outputs the number of that person
-
 export default function App() {
    const [isOpenSettingsModal, setIsOpenSettingsModal] = useState(false);
 

@@ -5,6 +5,7 @@ import {
    Text,
    View,
    ScrollView,
+   Keyboard,
    SafeAreaView,
    TouchableOpacity,
    Button,
@@ -13,7 +14,6 @@ import {
 import Modal from "react-native-modal";
 import ListItem from "../components/ListItem";
 
-import Contacts from "react-native-contacts";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 // so the idea is this i guess, you open the settings page by
@@ -23,7 +23,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 // and their number will be used as the output in the calculator.
 
 export default function SettingsPage(props: any) {
-   const [isSearchText, setIsSearchText] = useState("Search...");
+   const [number, setNumber] = useState("New Number...");
 
    return (
       <Modal
@@ -32,25 +32,21 @@ export default function SettingsPage(props: any) {
          animationOut={"slideOutDown"}
          style={{ margin: 0 }}
          hideModalContentWhileAnimating={true}
+         onBackdropPress={() => Keyboard.dismiss()}
       >
          <SafeAreaView style={styles.container}>
             <StatusBar style="light" />
             <View style={styles.bodyContainer}>
                <View style={styles.topContainer}>
                   <Button title="Done" color="#4fffe3" onPress={props.onCancel} />
-                  <View style={styles.searchCont}>
-                     <Ionicons name="search-outline" size={18} color="#aaa" />
-                     <TextInput style={styles.searchText} keyboardAppearance="dark" value={isSearchText} onFocus={() => setIsSearchText("")} />
-                  </View>
                </View>
-               <ScrollView style={styles.bottomContainer}>
-                  <TouchableOpacity onPress={() => { }}>
-                     <ListItem style={styles.listItem}>
-                        <Ionicons name="person-circle-outline" size={40} color="black" />
-                        <Text style={styles.listText}>Hello</Text>
-                     </ListItem>
+               <View style={styles.bottomContainer}>
+                  <Text style={{ color: "white", marginBottom: 20, fontSize: 21, fontWeight: "900" }}>Current Phone Number: {props.number}</Text>
+                  <TextInput style={{ color: "white", marginBottom: 20, borderColor: "#4fffe3", borderWidth: 3.2, borderRadius: 20, width: "80%", paddingVertical: 10, paddingLeft: 15 }} keyboardAppearance="dark" value={number} onFocus={() => setNumber("")} onChangeText={setNumber} />
+                  <TouchableOpacity onPress={() => props.updateNumber(number)}>
+                     <Text style={{ color: "#4fffe3", fontWeight: "900", fontSize: 16 }}>Submit</Text>
                   </TouchableOpacity>
-               </ScrollView>
+               </View>
             </View>
          </SafeAreaView>
       </Modal>
@@ -77,38 +73,7 @@ const styles = StyleSheet.create({
 
    bottomContainer: {
       flex: 1,
-   },
-
-   button: {},
-
-   searchCont: {
-      borderColor: "#4fffe3",
-      borderWidth: 4,
-      borderRadius: 25,
-      width: "96%",
-      marginHorizontal: "2%",
-      marginVertical: 12,
-      flexDirection: "row",
       alignItems: "center",
-      paddingHorizontal: 15,
-   },
-
-   searchText: {
-      color: "#aaa",
-      fontSize: 18,
-      paddingVertical: 12,
-      paddingHorizontal: 6,
-      flex: 1,
-   },
-
-   listItem: {
-      flexDirection: "row",
-      alignItems: "center",
-   },
-
-   listText: {
-      fontSize: 25,
-      fontWeight: "500",
-      paddingLeft: 10,
+      justifyContent: "center",
    },
 });

@@ -22,7 +22,11 @@ export default function App() {
       setIsOpenSettingsModal(!isOpenSettingsModal);
    };
    // output stuff
-   var phoneNumber = "069 527 1172"; // this value shouldn't be hardcoded, but I'm too lazy to fix it rn
+   const [phoneNumber, setPhoneNumber] = useState("355 69 527 1172"); // this value shouldn't be hardcoded, but I'm too lazy to fix it rn
+
+   const newPhoneNumber = (data: string) => {
+      setPhoneNumber(data);
+   }
 
    const [isOutputValue, setIsOutputValue] = useState("0");
    const [isInputValue, setIsInputValue] = useState("");
@@ -37,9 +41,6 @@ export default function App() {
    };
 
    // input stuff
-   const addSymbolHandler = () => {
-
-   };
 
    function addNumber(x: string) {
       setIsInputValue(isInputValue + x)
@@ -133,7 +134,7 @@ export default function App() {
                </Row>
             </View>
          </View>
-         <SettingsPage visible={isOpenSettingsModal} onCancel={toggleSettingsModalHandler} />
+         <SettingsPage visible={isOpenSettingsModal} onCancel={toggleSettingsModalHandler} number={phoneNumber} updateNumber={newPhoneNumber} />
       </SafeAreaView>
    );
 }
